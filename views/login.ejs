@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if (locals.username) { %>
+        <h1>Hola <%= locals.users.username %></h1>    
+    <%} else { %>
+        <h1>Ingresar sesión</h1>
+    <%}%>
+    <form action="/auth/login" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="username">
+            <input type="username" placeholder="Usuario" name="username">
+        </label>
+        <label for="password">
+            <input type="password" placeholder="Contraseña" name="password">
+        </label>
+        <button type="submit">Enviar</button>
+    </form>
+    <p>¿No tenés una cuenta? <a href="/auth/register">Registrate</a></p>
+    <a href="/">Home</a>
+</body>
+</html>
