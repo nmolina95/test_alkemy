@@ -12,25 +12,20 @@ module.exports = function(sequelize, dataTypes){
             allowNull: false
         },
         age: {
-            type: dataTypes.INTEGER,
-            allowNull: false
+            type: dataTypes.INTEGER
         },
         weight: {
-            type: dataTypes.DECIMAL,
-            allowNull: false
+            type: dataTypes.DECIMAL
         },
         image: {
-            type: dataTypes.STRING,
-            allowNull: false
+            type: dataTypes.STRING
         },
         history: {
-            type: dataTypes.TEXT,
-            allowNull: false
+            type: dataTypes.TEXT
         },
         idMovie: {
             type: dataTypes.INTEGER,
-            unsigned: true,
-            allowNull: false
+            unsigned: true
         },
         createdAt: {
             type: 'TIMESTAMP',

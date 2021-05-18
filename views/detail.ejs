@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Nombre: <%= characters.name %> </h2>
+    <p>Peso: <%= characters.weight %></p>
+    <img src="<%= characters.image %>" width="300px" alt="Personaje de Disney">
+    <p>Historia: <%= characters.history %></p>
+    <span>Aparece en las peliculas:</span>
+    <ul>
+        <li>Uno</li>
+    </ul>
+    <h4>Id: <%= characters.id %></h4>
+    <form method="POST" action="/characters/delete/<%= characters.id %>" enctype="application/x-www-form-urlencoded">
+        <button type="submit">Borrar</button>
+    </form>
+    <a href="/">Home</a>
+</body>
+</html>

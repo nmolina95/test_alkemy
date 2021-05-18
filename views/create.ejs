@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Crear personaje</h1>
+    <form action="/characters/create" method="POST" enctype="application/x-www-form-urlencoded">
+        <label for="name">
+            <input type="text" placeholder="Nombre" name="name">
+        </label>
+        <label for="age">
+            <input type="number" placeholder="Edad" name="age">
+        </label>
+        <label for="weight">
+            <input type="number" placeholder="Peso" name="weight">
+        </label>
+        <label for="image">
+            <input type="text" placeholder="Link de la foto" name="image">
+        </label>
+        <label for="history">
+            <input type="text" placeholder="Historia del personaje" name="history" id="">
+        </label>
+        <button type="submit">Enviar</button>
+    </form>
+    <a href="/">Home</a>
+</body>
+</html>

@@ -23,19 +23,13 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.STRING,
             allowNull: false
         },
-        history: {
-            type: dataTypes.TEXT,
-            allowNull: false
-        },
         idCharacter: {
             type: dataTypes.INTEGER,
-            unsigned: true,
-            allowNull: false
+            unsigned: true
         },
         idGenre: {
             type: dataTypes.INTEGER,
-            unsigned: true,
-            allowNull: false
+            unsigned: true
         },
         createdAt: {
             type: 'TIMESTAMP',

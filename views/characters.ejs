@@ -8,5 +8,14 @@
 </head>
 <body>
     <h1>Personajes</h1>
+    <a href="/characters/create">Agregar personaje</a>
+    <% if(characters) { %>
+        <ul>
+            <% characters.forEach(e => { %>
+            <a href="/characters/<%= e.id %>"><li><%= e.name %></li></a>
+            <% }) %>
+        </ul>
+    <% } %>
+    <a href="/">Home</a>
 </body>
 </html>

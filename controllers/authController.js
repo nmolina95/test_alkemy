@@ -16,7 +16,6 @@ const authController = {
         })
             .then((userFound) => {
                 if (bcrypt.compareSync(req.body.password, userFound.password)){
-                    req.session.user = userFound;
                     res.cookie('username', userFound.username, { maxAge: 10000 * 300 * 300 });
                     res.send('Éxito');
                 }

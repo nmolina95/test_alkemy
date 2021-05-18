@@ -8,5 +8,14 @@
 </head>
 <body>
     <h1>Películas / Series</h1>
+    <a href="/movies/create">Crear película o serie</a>
+    <% if(movies){ %>
+        <ul>
+            <% movies.forEach(e => { %>
+                <a href="/movies/<%= e.id %>"><li> <%= e.title %> </li></a>
+            <% }) %>
+        </ul>
+    <% } %>
+    <a href="/">Home</a>
 </body>
 </html>
