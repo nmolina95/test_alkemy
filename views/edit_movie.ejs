@@ -7,22 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Crear película/serie</h1>
-    <form action="/movies/create" method="post" enctype="application/x-www-form-urlencoded">
+    <h1>Editar película/serie</h1>
+    <form action="/movies/edit/<%= movie.id %>" method="post" enctype="application/x-www-form-urlencoded">
         <label for="title">
-            <input type="text" placeholder="Título" name="title">
+            <input type="text" name="title" value="<%= movie.title %>">
         </label>
         <label for="date">
-            <input type="date" name="date">
+            <input type="date" name="date" value="<%= movie.date %>">
         </label>
         <label for="image">
-            <input type="text" placeholder="Link de imagen" name="image">
+            <input type="text" name="image" value="<%= movie.image %>">
         </label>
         <label for="rating">
-            <input type="number" placeholder="Rating" name="rating" min="1" max="5">
+            <input type="number" name="rating" value="<%= movie.rating %>" min="1" max="5">
         </label>
         <button type="submit">Enviar</button>
+        <a href="/">Home</a>
     </form>
-    <a href="/">Home</a>
 </body>
 </html>

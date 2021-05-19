@@ -7,5 +7,7 @@ router.get('/create', charactersController.create);
 router.post('/create', charactersController.store);
 router.get('/:id', charactersController.detail);
 router.post('/delete/:id', charactersController.delete);
+router.get('/edit/:id', charactersController.edit);
+router.post('/edit/:id', charactersController.update);
 
 module.exports = router;

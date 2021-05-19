@@ -1,24 +1,43 @@
 let DB = require('../database/models');
+let Characters = DB.characters;
 
 const charactersController = {
     index: (req,res) => {
-        DB.characters.findAll()
+        Characters.findAll()
             .then(result => {
-                res.render('characters', { characters: result})
+                return res.render('characters', {characters: result})
             })
     },
     detail: (req,res) => {
-        DB.characters.findByPk(req.params.id)
+        findCharacter(req,res)
             .then(result => {
-                return res.render('detail', { characters: result})
+                return res.render('detail', {character: result})
             })
             .catch(err => console.log(err));
     },
     edit: (req,res) => {
-        return res.render('detail')
+        findCharacter(req,res)
+            .then(result => {
+                return res.render('edit_character', {character: result});
+            })
+            .catch(err => console.log(err))
     },
     update: (req,res) => {
-
+        Characters.update({
+            name: req.body.name,
+            age: req.body.age,
+            weight: req.body.weight,
+            image: req.body.image,
+            history: req.body.history
+        }, {
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(() => {
+                return res.redirect('/characters')
+            })
+            .catch(err => console.log(err));
     },
     create: (req,res) => {
         return res.render('create')
@@ -32,18 +51,27 @@ const charactersController = {
         history: req.body.history
         }
 
-        DB.characters.create(newCharacter)
-            .then(() => res.redirect('/characters'))
+        Characters.create(newCharacter)
+            .then(() => {
+                return res.redirect('/characters')
+            })
     },
     delete: (req,res) => {
-        DB.characters.destroy({
+        Characters.destroy({
             where: {
                 id: req.params.id
             }
         })
-            .then(() => res.redirect('/characters'))
+            .then(() => {
+                return res.redirect('/characters')
+            })
             .catch(err => console.log(err));
     }
 };
+
+function findCharacter(req,res){
+    let ID = req.params.id;
+    return Characters.findByPk(ID);
+}
 
 module.exports = charactersController;

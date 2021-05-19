@@ -10,6 +10,7 @@
     <h2><%= movie.title %></h2>
     <img src="<%= movie.image %>" alt="Foto de la película" width="300px">
     <p>Rating: <%= movie.rating %></p>
+    <a href="/movies/edit/<%= movie.id %>"><button>Editar</button></a>
     <form method="POST" action="/movies/delete/<%= movie.id %>" enctype="application/x-www-form-urlencoded">
         <button type="submit">Borrar</button>
     </form>

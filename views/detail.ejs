@@ -7,16 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Nombre: <%= characters.name %> </h2>
-    <p>Peso: <%= characters.weight %></p>
-    <img src="<%= characters.image %>" width="300px" alt="Personaje de Disney">
-    <p>Historia: <%= characters.history %></p>
+    <h2>Nombre: <%= character.name %> </h2>
+    <h4>Edad: <%=character.age%></h4>
+    <p>Peso: <%= character.weight %></p>
+    <img src="<%= character.image %>" width="300px" alt="Personaje de Disney">
+    <p>Historia: <%= character.history %></p>
     <span>Aparece en las peliculas:</span>
     <ul>
         <li>Uno</li>
     </ul>
-    <h4>Id: <%= characters.id %></h4>
-    <form method="POST" action="/characters/delete/<%= characters.id %>" enctype="application/x-www-form-urlencoded">
+    <h4>Id: <%= character.id %></h4>
+    <a href="/characters/edit/<%= character.id %>"><button>Editar</button></a>
+    <form method="POST" action="/characters/delete/<%= character.id %>" enctype="application/x-www-form-urlencoded">
         <button type="submit">Borrar</button>
     </form>
     <a href="/">Home</a>
