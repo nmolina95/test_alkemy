@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Buscar película/serie</h1>
+    <form action="/movies/find/" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="query">
+            <input type="search" placeholder="Título de la película" name="query">
+        </label>
+        <% if(genres) { %>
+            <label for="genre">
+                <select name="genre">
+                    <option value="" selected>Default</option>
+                    <% genres.forEach(e=> { %>
+                        <option value="<%=e.id%>"><%=e.name%></option>
+                    <% }) %>
+                </select>
+            </label>
+        <% } else { %>
+            <p>Aún no existen géneros</p>
+        <% } %>
+        <label for="order">
+            <select name="order">
+                <option value="ASC">Ascendente</option>
+                <option value="DESC">Descendente</option>
+            </select>
+        </label>
+        <button type="submit">Enviar</button>
+    </form>
+    <a href="/">Home</a>
+</body>
+</html>

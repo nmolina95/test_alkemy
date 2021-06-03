@@ -10,6 +10,12 @@
     <h2><%= movie.title %></h2>
     <img src="<%= movie.image %>" alt="Foto de la película" width="300px">
     <p>Rating: <%= movie.rating %></p>
+    <% if(movie.genre){ %>
+        <h4>Género: <%= movie.genre.name %></h4>
+    <% } else { %>
+        <h4>Género: Aún no se le asigno</h4>
+    <% } %>
+    <p>Fecha de estreno: <%= movie.date %></p>
     <a href="/movies/edit/<%= movie.id %>"><button>Editar</button></a>
     <form method="POST" action="/movies/delete/<%= movie.id %>" enctype="application/x-www-form-urlencoded">
         <button type="submit">Borrar</button>

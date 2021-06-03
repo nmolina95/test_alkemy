@@ -24,6 +24,14 @@
         <label for="history">
             <input type="text" placeholder="Historia del personaje" name="history">
         </label>
+        <% if(movies) { %>
+            <label for="movies">
+                <% movies.forEach(e=> { %>
+                    <input type="checkbox" name="movies" value="<%=e.id%>">
+                    <%=e.title%>
+                        <% }) %>
+            </label>
+            <% } %>
         <button type="submit">Enviar</button>
     </form>
     <a href="/">Home</a>

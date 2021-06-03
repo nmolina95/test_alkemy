@@ -21,6 +21,21 @@
         <label for="rating">
             <input type="number" name="rating" value="<%= movie.rating %>" min="1" max="5">
         </label>
+        <% if(genres) { %>
+            <label for="genre">
+                <select name="genre">
+                    <% for(let i = 0; i < genres.length ; i++){ %>
+                        <% if(genres[i].id == movie.idGenre) {%>
+                            <option value="<%=genres[i].id%>" selected><%=genres[i].name%></option>
+                        <% } else { %>
+                            <option value="<%=genres[i].id%>"><%=genres[i].name%></option>
+                        <% } %>
+                    <% } %>
+                </select>
+            </label>
+            <% } else { %>
+                <p>Aún no existen géneros</p>
+            <% } %>
         <button type="submit">Enviar</button>
         <a href="/">Home</a>
     </form>

@@ -7,13 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Funcionó</h1>
-    <ul>
-        <a href="/movies"><li>Películas / Series</li></a>
-        <a href="/characters"><li>Personajes</li></a>
-        <a href="/auth/login"><li>Login / Registro</li></a>
-        <a href=""><li>Agregar / Modificar</li></a>
-        <a href=""><li>Búsqueda</li></a>
-    </ul>
+    <% if(locals.user){ %>
+        <h1>Bienvenido <%=locals.user.username%></h1>
+        <ul>
+            <a href="/movies"><li>Películas / Series</li></a>
+            <a href="/characters"><li>Personajes</li></a>
+            <a href="/genres"><li>Géneros</li></a>
+            <a href="/movies/find"><li>Búsqueda</li></a>
+            <a href="/auth/logout"><li>Logout</li></a>
+        </ul>
+    <% } else{ %>
+        <h1>Hola usuario desconocido</h1>
+        <ul>
+            <a href="/auth/login"><li>Login / Registro</li></a>
+        </ul>
+    <% } %>
 </body>
 </html>

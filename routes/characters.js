@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const charactersController = require('../controllers/charactersController');
+const authMiddleware = require('../middlewares/authMiddleware');
 
-router.get('/', charactersController.index);
-router.get('/create', charactersController.create);
-router.post('/create', charactersController.store);
-router.get('/:id', charactersController.detail);
-router.post('/delete/:id', charactersController.delete);
-router.get('/edit/:id', charactersController.edit);
-router.post('/edit/:id', charactersController.update);
+router.get('/', authMiddleware, charactersController.index);
+router.get('/create', authMiddleware, charactersController.create);
+router.post('/create', authMiddleware, charactersController.store);
+router.get('/:id', authMiddleware, charactersController.detail);
+router.post('/delete/:id', authMiddleware, charactersController.delete);
+router.get('/edit/:id', authMiddleware, charactersController.edit);
+router.post('/edit/:id', authMiddleware, charactersController.update);
 
 module.exports = router;

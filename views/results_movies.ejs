@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Resultados películas/series</h1>
+
+    <form action="/movies/find/" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="query">
+            <input type="search" value="<%=movies[2].title%>" name="query">
+        </label>
+        <% if(movies[1]) { %>
+            <label for="genre">
+                <select name="genre">
+                    <option value="">Default</option>
+                    <% movies[1].forEach(e=> { %>
+                        <% if(e.id == movies[2].idGenre){ %>
+                            <option value="<%=e.id%>" selected><%=e.name%></option>
+                        <% } else { %>
+                            <option value="<%=e.id%>"><%=e.name%></option>
+                        <% } %>
+                    <% }) %>
+                </select>
+            </label>
+        <% } else { %>
+            <p>Aún no existen géneros</p>
+        <% } %>
+        <label for="order">
+            <select name="order">
+                <option value="ASC">Ascendente</option>
+                <% if(movies[2].order == 'DESC'){ %>
+                    <option value="DESC" selected>Descendente</option>
+                <% } else { %>
+                    <option value="DESC">Descendente</option>
+                <% } %>
+            </select>
+        </label>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <% if(movies[0]) { %>
+        <p>Cantidad de resultados: <%=movies[0].count%></p>
+        <ul>
+            <% movies[0].rows.forEach(e=> { %>
+                <li>
+                    <a href="/movies/<%=e.id%>"><%=e.title%></a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <a href="/">Home</a>
+</body>
+</html>

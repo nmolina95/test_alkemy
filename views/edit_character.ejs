@@ -8,22 +8,39 @@
 </head>
 <body>
     <h1>Editar personaje</h1>
-    <form action="/characters/edit/<%=character.id%>" method="post" enctype="application/x-www-form-urlencoded">
+    <form action="/characters/edit/<%=character[0].id%>" method="post" enctype="application/x-www-form-urlencoded">
         <label for="name">
-            <input type="text" name="name" value="<%=character.name%>">
+            <input type="text" name="name" value="<%=character[0].name%>">
         </label>
         <label for="age">
-            <input type="number" name="age" value="<%=character.age%>">
+            <input type="number" name="age" value="<%=character[0].age%>">
         </label>
         <label for="weight">
-            <input type="number" name="weight" value="<%=character.weight%>">
+            <input type="number" name="weight" value="<%=character[0].weight%>">
         </label>
         <label for="image">
-            <input type="text" name="image" value="<%=character.image%>">
+            <input type="text" name="image" value="<%=character[0].image%>">
         </label>
         <label for="history">
-            <input type="text" name="history" value="<%=character.history%>">
+            <input type="text" name="history" value="<%=character[0].history%>">
         </label>
+        <% if(character[1]) { %>
+            <label for="movies">
+                <% let checked;%>
+                <% character[1].forEach(e=> { %>
+                    <% checked = false %>
+                    <% character[2].forEach(asoc => { %>
+                        <% if(e.id == asoc.idMovie && character[0].id == asoc.idCharacter) { %>
+                            <input type="checkbox" name="movies" value="<%=e.id%>" checked><%=e.title%>
+                            <% checked = true; %>
+                        <% } %>
+                    <% }) %>
+                    <% if(!checked){ %>
+                        <input type="checkbox" name="movies" value="<%=e.id%>"><%=e.title%>
+                    <% } %>
+                <% }) %>
+            </label>
+            <% } %>
         <button type="submit">Enviar</button>
         <a href="/">Home</a>
     </form>
