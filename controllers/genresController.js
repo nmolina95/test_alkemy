@@ -1,5 +1,4 @@
-const DB = require('../database/models');
-const Genres = DB.genres;
+const {Genres} = require('../database/models');
 
 const genresController = {
     index: (req,res) => {

@@ -26,6 +26,6 @@ const genresRouter = require('./routes/genres');
 app.use(rememberUserMiddleware);
 app.use('/', homeRouter);
 app.use('/auth', authRouter);
-app.use('/movies', moviesRouter);
+app.use('/movies/', moviesRouter);
 app.use('/characters', charactersRouter);
 app.use('/genres', genresRouter);

@@ -5,8 +5,8 @@ const moviesController = {
     index: (req,res) => {
         Movies.findAll()
             .then(result => {
-                return res.json({ movies: result });
-                //return res.render('movies', { movies: result });
+                //return res.json({ movies: result });
+                return res.render('movies', { movies: result });
             })
             .catch(err => console.log(err));
     },
