@@ -15,7 +15,7 @@ app.use(session({ secret: 'frase oculta'}));
 app.use(cookieParser());
 
 // Configuración del puerto donde se ejectura proyecto
-app.listen(3000, () => console.log('Servidor corriendo en puerto 3000'))
+app.listen(process.env.PORT || 3000, () => console.log('Servidor corriendo en puerto 3000'))
 
 const homeRouter = require('./routes/home');
 const authRouter = require('./routes/auth');
