@@ -1,7 +1,11 @@
 const { Users } = require('../database/models');
 const bcrypt = require('bcryptjs');
+const sgMail = require('@sendgrid/mail')
+const API_KEY = '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'
+sgMail.setApiKey(API_KEY);
 
-const authController = {
+
+module.exports =  authController = {
     index: (req,res) => {
         res.render('register')
     },
@@ -33,7 +37,17 @@ const authController = {
         newUser.password = bcrypt.hashSync(newUser.password, 15);
 
         Users.create(newUser)
-            .then(() => res.redirect('/auth/login'))
+            .then(() => {
+                const welcomeEmail = {
+                    to: newUser.username,
+                    from: 'itisryzenvr@gmail.com',
+                    subject: 'Welcome to Ryzen VR',
+                    text: 'You are now able to go shopping on our store. Your username is ' + newUser.username + ' :)'
+                }
+
+                sgMail.send(welcomeEmail);
+                return res.redirect('/auth/login')}
+            )
             .catch(err => console.log(err));
     },
     logout: (req,res) => {
@@ -46,5 +60,3 @@ const authController = {
         return res.redirect('/');
     }
 };
-
-module.exports = authController;

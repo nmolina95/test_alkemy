@@ -1,6 +1,6 @@
 const {Genres} = require('../database/models');
 
-const genresController = {
+module.exports = genresController = {
     index: (req,res) => {
         Genres.findAll()
             .then(result => {
@@ -68,5 +68,3 @@ function findGenre(req,res){
     let ID = req.params.id;
     return Genres.findByPk(ID);
 }
-
-module.exports = genresController;

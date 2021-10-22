@@ -1,7 +1,7 @@
 const { Movies, Genres } = require('../database/models');
 const { Op } = require('sequelize');
 
-const moviesController = {
+module.exports = moviesController = {
     index: (req,res) => {
         Movies.findAll()
             .then(result => {
@@ -130,5 +130,3 @@ function searchMovies(req,res){
         ]
     });
 }
-
-module.exports = moviesController;

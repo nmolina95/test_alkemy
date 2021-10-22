@@ -9,10 +9,12 @@
 <body>
     <h2><%=genre.name%></h2>
     <img src="<%=genre.image%>" alt="Género" width="300px">
-    <a href="/genres/edit/<%=genre.id%>"><button type="submit">Editar</button></a>
-    <form action="/genres/delete/<%=genre.id%>" method="post" enctype="application/x-www-form-urlencoded">
-        <button type="submit">Eliminar</button>
-    </form>
+    <div>
+        <a href="/genres/edit/<%=genre.id%>"><button type="submit">Editar</button></a>
+        <form action="/genres/delete/<%=genre.id%>" method="post" enctype="application/x-www-form-urlencoded">
+            <button type="submit">Eliminar</button>
+        </form>
+    </div>
     <a href="/">Home</a>
 </body>
 </html>

@@ -10,11 +10,13 @@
     <h1>Géneros</h1>
     <a href="/genres/add">Agregar categoría</a>
     <% if(genres) { %>
-        <ul>
-            <% genres.forEach(e => { %>
-                <a href="/genres/<%=e.id%>"><li><%=e.name%></li></a>
-            <% }) %>
-        </ul>
+        <div>
+            <ul>
+                <% genres.forEach(e => { %>
+                    <a href="/genres/<%=e.id%>"><li><%=e.name%></li></a>
+                <% }) %>
+            </ul>
+        </div>
     <% } else { %>
         <p>Aún no se han agregado categorías</p>
     <% } %>

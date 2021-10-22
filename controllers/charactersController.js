@@ -1,7 +1,8 @@
+//const { where } = require('sequelize/types');
 const { Characters, Movies, characters_movies } = require('../database/models');
 const movies = require('../database/models/movies');
 
-const charactersController = {
+module.exports = charactersController = {
     index: (req,res) => {
         Characters.findAll()
             .then(result => {
@@ -34,23 +35,34 @@ const charactersController = {
         }, {
             where: {
                 id: req.params.id
-        }
-        })
-
-        /* Characters.update({
-            name: req.body.name,
-            age: req.body.age,
-            weight: req.body.weight,
-            image: req.body.image,
-            history: req.body.history
-        }, {
-            where: {
-                id: req.params.id
             }
-        }) */
+        })
 
         
-       /*  Promise.all([Characters.update({
+        Promise.all([Characters.update(
+            {
+                name: req.body.name,
+                age: req.body.age,
+                weight: req.body.weight,
+                image: req.body.image,
+                history: req.body.history,
+                movies: req.body.movies
+            }, {
+                where: {
+                    id: req.params.id
+                }           
+            }
+            ), characters_movies.update({
+                idCharacter: req.params.id,
+                idMovie: req.body.movies.value
+            }, {
+                where: {
+                    idCharacter: req.params.id,
+                    idMovie: req.body.movies.value
+                }
+            })
+        ]) 
+        /*Characters.update({
             name: req.body.name,
             age: req.body.age,
             weight: req.body.weight,
@@ -61,19 +73,7 @@ const charactersController = {
             where: {
                 id: req.params.id
             }
-        }), newAsoc(req,res)]) */
-        Characters.update({
-            name: req.body.name,
-            age: req.body.age,
-            weight: req.body.weight,
-            image: req.body.image,
-            history: req.body.history,
-            movies: req.body.movies
-        }, {
-            where: {
-                id: req.params.id
-            }
-        })
+        })*/
             .then(() => {
                 return res.redirect('/characters')
             })
@@ -127,15 +127,20 @@ function findCharacter(req,res){
     return Characters.findByPk(ID);
 }
 
-function findMovies() {
+function findMovies(){
     return Movies.findAll();
 }
 
-function newAsoc(req,res) {
+function newAsoc(req,res){
     for (let i = 0; i < req.body.movies.length; i++) {
-        characters_movies.create({
+        characters_movies.update({
             idCharacter: req.params.id,
-            idMovie: req.body.movies[i]
+            idMovie: req.body.movies.value
+        }, {
+            where: {
+                idCharacter: req.params.id,
+                idMovie: req.body.movies.value
+            }
         })
     }
 }
@@ -143,5 +148,3 @@ function newAsoc(req,res) {
 function findAsoc(){
     return characters_movies.findAll();
 }
-
-module.exports = charactersController;
